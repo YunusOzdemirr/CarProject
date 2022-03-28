@@ -6,7 +6,8 @@ namespace CarProject.Entities.Concrete
 {
     public class Boat : Vehicle, IEntity
     {
-        IEnumerable<VehiclePicture> BoatPictures { get; set; }
+        public int BoatPictureId { get; set; }
+        public ICollection<VehiclePicture> BoatPictures { get; set; }
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CarProject.Shared.Entities.Abstract;
 
 namespace CarProject.Entities.Concrete
@@ -12,8 +13,7 @@ namespace CarProject.Entities.Concrete
         public byte[] PasswordHash { get; set; }
         public string EmailAddress { get; set; }
         public bool IsEmailAddressVerified { get; set; }
-        public int? UserPictureId { get; set; }
-        public UserPicture UserPicture { get; set; }
+        public ICollection<UserPicture> UserPictures { get; set; }
         public DateTime? LastLogin { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace CarProject.Entities.Concrete
     {
         public int Wheels { get; set; }
         public string Headlights { get; set; }
-        IEnumerable<VehiclePicture> CarPictures { get; set; }
+        public ICollection<VehiclePicture> CarPictures { get; set; }
     }
 }
 
