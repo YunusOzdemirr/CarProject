@@ -12,4 +12,7 @@
     <Folder Include="Concrete\" />
     <Folder Include="Dtos\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarProject.Shared\CarProject.Shared.csproj" />
+  </ItemGroup>
 </Project>

@@ -7,9 +7,30 @@
   <ItemGroup>
     <None Remove="Concrete\" />
     <None Remove="Concrete\EntityFramework\" />
+    <None Remove="Microsoft.EntityFrameworkCore.Tools" />
+    <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
+    <None Remove="Microsoft.EntityFrameworkCore.Design" />
+    <None Remove="Concrete\EntityFramework\Mappings\" />
+    <None Remove="Concrete\EntityFramework\DatabaseContext\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Concrete\" />
     <Folder Include="Concrete\EntityFramework\" />
+    <Folder Include="Concrete\EntityFramework\Mappings\" />
+    <Folder Include="Concrete\EntityFramework\DatabaseContext\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.15">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.15">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarProject.Entities\CarProject.Entities.csproj" />
   </ItemGroup>
 </Project>

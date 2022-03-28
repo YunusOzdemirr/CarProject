@@ -1,7 +1,9 @@
 ﻿using System;
+using CarProject.Shared.Entities.Abstract;
+
 namespace CarProject.Entities.Concrete
 {
-    public class User
+    public class User : EntityBase<int>, IEntity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
