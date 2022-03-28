@@ -4,4 +4,45 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Abstract\" />
+    <None Remove="AutoMapper\" />
+    <None Remove="Concrete\" />
+    <None Remove="Extensions\" />
+    <None Remove="Utilities\" />
+    <None Remove="ValidationRules\" />
+    <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+    <None Remove="Microsoft.Extensions.DependencyInjection" />
+    <None Remove="AutoMapper" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="FluentValidation" />
+    <None Remove="AutoMapper\Profiles\" />
+    <None Remove="ValidationRules\FluentValidation\" />
+    <None Remove="ValidationRules\FluentValidation\CarValidator\" />
+    <None Remove="ValidationRules\FluentValidation\UserValidator\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Abstract\" />
+    <Folder Include="AutoMapper\" />
+    <Folder Include="Concrete\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="ValidationRules\" />
+    <Folder Include="AutoMapper\Profiles\" />
+    <Folder Include="ValidationRules\FluentValidation\" />
+    <Folder Include="ValidationRules\FluentValidation\CarValidator\" />
+    <Folder Include="ValidationRules\FluentValidation\UserValidator\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarProject.Entities\CarProject.Entities.csproj" />
+    <ProjectReference Include="..\CarProject.Shared\CarProject.Shared.csproj" />
+    <ProjectReference Include="..\CarProject.Data\CarProject.Data.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
+  </ItemGroup>
 </Project>

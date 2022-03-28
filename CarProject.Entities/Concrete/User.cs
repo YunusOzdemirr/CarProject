@@ -12,7 +12,6 @@ namespace CarProject.Entities.Concrete
         public byte[] PasswordSalt { get; set; }
         public byte[] PasswordHash { get; set; }
         public string EmailAddress { get; set; }
-        public bool IsEmailAddressVerified { get; set; }
         public ICollection<UserPicture> UserPictures { get; set; }
         public DateTime? LastLogin { get; set; }
     }
