@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CarProject.Business.Abstract;
-using CarProject.Entities.Concrete;
-using CarProject.Entities.Dtos.CarDtos;
-using Microsoft.AspNetCore.Authorization;
+using CarProject.Entities.Dtos.BrandDtos;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,55 +11,55 @@ using Microsoft.AspNetCore.Mvc;
 namespace CarProject.Api.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
-    public class CarsController : Controller
+    public class BrandsController : Controller
     {
-        private readonly ICarService _carService;
+        private readonly IBrandService _brandService;
 
-        public CarsController(ICarService carService)
+        public BrandsController(IBrandService brandService)
         {
-            _carService = carService;
+            _brandService = brandService;
         }
+
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> AddAsync(CarAddDto carAddDto)
+        public async Task<IActionResult> AddAsync(BrandAddDto brandAddDto)
         {
-            var result = await _carService.AddAsync(carAddDto);
+            var result = await _brandService.AddAsync(brandAddDto);
             return Ok(result);
         }
         [HttpGet]
         [Route("[action]")]
-        public async Task<IActionResult> GetById(int carId)
+        public async Task<IActionResult> GetById(int brandId)
         {
-            var result = await _carService.GetByIdAsync(carId);
+            var result = await _brandService.GetByIdAsync(brandId);
             return Ok(result);
         }
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetByColor(string color)
+        public async Task<IActionResult> GetByName(string name)
         {
-            var result = await _carService.GetByColor(color);
+            var result = await _brandService.GetByName(name);
             return Ok(result);
         }
 
         [HttpPost("[action]")]
         public async Task<IActionResult> GetAllAsync(bool isActive = true)
         {
-            var result = await _carService.GetAllAsync(isActive);
+            var result = await _brandService.GetAllAsync(isActive);
             return Ok(result);
         }
 
         [HttpPut("[action]")]
-        public async Task<IActionResult> UpdateAsync(CarUpdateDto carUpdateDto)
+        public async Task<IActionResult> UpdateAsync(BrandUpdateDto brandUpdateDto)
         {
-            var result = await _carService.UpdateAsync(carUpdateDto);
+            var result = await _brandService.UpdateAsync(brandUpdateDto);
             return Ok(result);
         }
 
         [HttpDelete("[action]")]
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await _carService.DeleteAsync(id);
+            var result = await _brandService.DeleteAsync(id);
             return Ok(result);
         }
     }

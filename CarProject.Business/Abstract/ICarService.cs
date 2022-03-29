@@ -12,7 +12,7 @@ namespace CarProject.Business.Abstract
         Task<IDataResult> GetByIdAsync(int id);
         Task<IDataResult> GetByColor(string color);
         Task<IDataResult> GetAllAsync(bool? isActive);
-        Task<IDataResult> UpdateAsync(Car car);
+        Task<IDataResult> UpdateAsync(CarUpdateDto carUpdateDto);
         Task<IDataResult> DeleteAsync(int id);
         Task<IDataResult> HardDeleteAsync(int id);
     }

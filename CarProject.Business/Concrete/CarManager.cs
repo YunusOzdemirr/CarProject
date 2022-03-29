@@ -80,10 +80,14 @@ namespace CarProject.Business.Concrete
             return new DataResult(ResultStatus.Success, car);
         }
 
-        public async Task<IDataResult> UpdateAsync(Car car)
+        public async Task<IDataResult> UpdateAsync(CarUpdateDto carUpdateDto)
         {
-            ValidationTool.Validate(new CarUpdateValidator(), car);
-
+            ValidationTool.Validate(new CarUpdateValidator(), carUpdateDto);
+            var carIsExist = await Context.Cars.SingleOrDefaultAsync(a => a.Id == carUpdateDto.Id);
+            if (carIsExist == null)
+                throw new Exception("Böyle bir araç bulunamadı");
+            var car = Mapper.Map<Car>(carUpdateDto);
+            car.ModifiedDate = DateTime.Now;
             Context.Cars.Update(car);
             await Context.SaveChangesAsync();
             return new DataResult(ResultStatus.Success, car.Name + " adlı araba başarıyla güncellendi");
