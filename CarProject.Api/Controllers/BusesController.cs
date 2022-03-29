@@ -62,6 +62,12 @@ namespace CarProject.Api.Controllers
             var result = await _busService.DeleteAsync(id);
             return Ok(result);
         }
+        [HttpDelete("[action]")]
+        public async Task<IActionResult> HardDelete(int id)
+        {
+            var result = await _busService.HardDeleteAsync(id);
+            return Ok(result);
+        }
     }
 }
 

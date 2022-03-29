@@ -10,6 +10,7 @@ namespace CarProject.Business.AutoMapper.Profiles
         public CarProfile()
         {
             CreateMap<CarAddDto, Car>().ReverseMap();
+            CreateMap<CarUpdateDto, Car>().ReverseMap();
         }
     }
 }

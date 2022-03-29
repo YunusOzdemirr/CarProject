@@ -14,6 +14,7 @@ namespace CarProject.Business.Abstract
         Task<IDataResult> GetAllAsync(bool? isActive);
         Task<IDataResult> UpdateAsync(BrandUpdateDto brandAddDto);
         Task<IDataResult> DeleteAsync(int id);
+        Task<IDataResult> HardDeleteAsync(int id);
     }
 }
 

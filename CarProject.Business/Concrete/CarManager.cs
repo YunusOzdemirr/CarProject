@@ -27,7 +27,7 @@ namespace CarProject.Business.Concrete
         public async Task<IDataResult> AddAsync(CarAddDto carAddDto)
         {
             var car = Mapper.Map<Car>(carAddDto);
-            ValidationTool.Validate(new CarAddValidator(), car);
+            ValidationTool.Validate(new CarAddValidator(), carAddDto);
             var isExist = await Context.Cars.SingleOrDefaultAsync(a => a.Name == car.Name);
             if (isExist is not null)
                 throw new Exception("Bu Araç Mevcut");
@@ -86,7 +86,7 @@ namespace CarProject.Business.Concrete
             var carIsExist = await Context.Cars.SingleOrDefaultAsync(a => a.Id == carUpdateDto.Id);
             if (carIsExist == null)
                 throw new Exception("Böyle bir araç bulunamadı");
-            var car = Mapper.Map<Car>(carUpdateDto);
+            var car = Mapper.Map<CarUpdateDto, Car>(carUpdateDto, carIsExist);
             car.ModifiedDate = DateTime.Now;
             Context.Cars.Update(car);
             await Context.SaveChangesAsync();

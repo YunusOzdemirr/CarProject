@@ -1,10 +1,11 @@
 ﻿using System;
 using CarProject.Entities.Concrete;
+using CarProject.Entities.Dtos.BusDtos;
 using FluentValidation;
 
 namespace CarProject.Business.ValidationRules.FluentValidation.BusValidator
 {
-    public class BusAddDtoValidator : AbstractValidator<Bus>
+    public class BusAddDtoValidator : AbstractValidator<BusAddDto>
     {
         public BusAddDtoValidator()
         {

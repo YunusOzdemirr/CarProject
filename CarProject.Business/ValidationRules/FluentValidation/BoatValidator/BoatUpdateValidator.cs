@@ -1,10 +1,11 @@
 ﻿using System;
 using CarProject.Entities.Concrete;
+using CarProject.Entities.Dtos.BoatDtos;
 using FluentValidation;
 
 namespace CarProject.Business.ValidationRules.FluentValidation.BoatValidator
 {
-    public class BoatUpdateValidator : AbstractValidator<Boat>
+    public class BoatUpdateValidator : AbstractValidator<BoatUpdateDto>
     {
         public BoatUpdateValidator()
         {

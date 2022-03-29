@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CarProject.Business.Abstract;
 using CarProject.Entities.Dtos.BoatDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CarProject.Api.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     public class BoatsController : Controller
     {
         private readonly IBoatService _boatService;
@@ -60,6 +62,12 @@ namespace CarProject.Api.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _boatService.DeleteAsync(id);
+            return Ok(result);
+        }
+        [HttpDelete("[action]")]
+        public async Task<IActionResult> HardDelete(int id)
+        {
+            var result = await _boatService.HardDeleteAsync(id);
             return Ok(result);
         }
     }

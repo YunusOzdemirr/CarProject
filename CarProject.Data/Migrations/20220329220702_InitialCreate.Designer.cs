@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarProject.Data.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220329090859_InitialCreate")]
+    [Migration("20220329220702_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,9 +27,6 @@ namespace CarProject.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BoatPictureId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Color")
                         .IsRequired()

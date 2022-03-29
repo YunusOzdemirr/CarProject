@@ -9,7 +9,8 @@ namespace CarProject.Business.AutoMapper.Profiles
     {
         public BoatProfile()
         {
-            CreateMap<BoatAddDto, Boat>();
+            CreateMap<BoatAddDto, Boat>().ReverseMap();
+            CreateMap<BoatUpdateDto, Boat>().ReverseMap();
         }
     }
 }

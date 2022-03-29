@@ -71,6 +71,17 @@ namespace CarProject.Business.Concrete
             return new DataResult(ResultStatus.Success, bus);
         }
 
+        public async Task<IDataResult> HardDeleteAsync(int id)
+        {
+            var bus = await Context.Buses.SingleOrDefaultAsync(a => a.Id == id);
+            if (bus is null)
+                throw new NotFoundArgumentException("Böyle bir otobüs bulunamadı.", new Error("Not Found", "Id"));
+
+            Context.Buses.Remove(bus);
+            await Context.SaveChangesAsync();
+            return new DataResult(ResultStatus.Success, $"{bus.Name} başarıyla kalıcı olarak silindi");
+        }
+
         public async Task<IDataResult> UpdateAsync(BusUpdateDto busUpdateDto)
         {
             ValidationTool.Validate(new BusUpdateValidator(), busUpdateDto);

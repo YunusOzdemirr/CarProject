@@ -2,6 +2,7 @@
 using AutoMapper;
 using CarProject.Entities.Concrete;
 using CarProject.Entities.Dtos.BrandDtos;
+using CarProject.Entities.Dtos.BusDtos;
 
 namespace CarProject.Business.AutoMapper.Profiles
 {
@@ -9,8 +10,8 @@ namespace CarProject.Business.AutoMapper.Profiles
     {
         public BusProfile()
         {
-            CreateMap<BrandAddDto, Brand>().ReverseMap();
-            CreateMap<BrandUpdateDto, Brand>().ReverseMap();
+            CreateMap<BusAddDto, Bus>().ReverseMap();
+            CreateMap<BusUpdateDto, Bus>().ReverseMap();
         }
     }
 }

@@ -1,10 +1,11 @@
 ﻿using System;
 using CarProject.Entities.Concrete;
+using CarProject.Entities.Dtos.BrandDtos;
 using FluentValidation;
 
 namespace CarProject.Business.ValidationRules.FluentValidation.BrandValidator
 {
-    public class BrandUpdateDtoValidator : AbstractValidator<Brand>
+    public class BrandUpdateDtoValidator : AbstractValidator<BrandUpdateDto>
     {
         public BrandUpdateDtoValidator()
         {

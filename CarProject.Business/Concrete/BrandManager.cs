@@ -56,7 +56,7 @@ namespace CarProject.Business.Concrete
 
         public async Task<IDataResult> GetByIdAsync(int id)
         {
-            var brand = Context.Brands.SingleOrDefaultAsync(a => a.Id == id);
+            var brand = await Context.Brands.SingleOrDefaultAsync(a => a.Id == id);
             if (brand is null)
                 throw new NotFoundArgumentException("Böyle bir marka bulunmamaktadır.", new Error("Not Found", "Id"));
 
@@ -65,11 +65,20 @@ namespace CarProject.Business.Concrete
 
         public async Task<IDataResult> GetByName(string name)
         {
-            var brand = Context.Brands.SingleOrDefaultAsync(a => a.Name == name);
+            var brand = await Context.Brands.SingleOrDefaultAsync(a => a.Name == name);
             if (brand is null)
                 throw new NotFoundArgumentException("Böyle bir marka bulunmamaktadır.", new Error("Not Found", "Name"));
 
             return new DataResult(ResultStatus.Success, brand);
+        }
+        public async Task<IDataResult> HardDeleteAsync(int id)
+        {
+            var brand = await Context.Brands.SingleOrDefaultAsync(a => a.Id == id);
+            if (brand is null)
+                throw new NotFoundArgumentException("Böyle bir marka bulunmamakta", new Error("Not Found", "Id"));
+            Context.Brands.Remove(brand);
+            await Context.SaveChangesAsync();
+            return new DataResult(ResultStatus.Success, $"{brand.Name} başarıyla silindi.");
         }
 
         public async Task<IDataResult> UpdateAsync(BrandUpdateDto brandUpdateDto)
@@ -79,7 +88,7 @@ namespace CarProject.Business.Concrete
             if (brandIsExist is null)
                 throw new NotFoundArgumentException("Böyle bir marka bulunamadı", new Error("Not Found", "Id"));
 
-            var brand = Mapper.Map<Brand>(brandUpdateDto);
+            var brand = Mapper.Map<BrandUpdateDto, Brand>(brandUpdateDto, brandIsExist);
             brand.ModifiedDate = DateTime.Now;
             Context.Brands.Update(brand);
             await Context.SaveChangesAsync();

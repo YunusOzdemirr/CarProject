@@ -26,11 +26,10 @@ namespace CarProject.Business.Concrete
         public async Task<IDataResult> AddAsync(BoatAddDto boatAddDto)
         {
             ValidationTool.Validate(new BoatAddValidator(), boatAddDto);
-            var boat = Mapper.Map<Boat>(boatAddDto);
-            var boatIsExist = await Context.Boats.SingleOrDefaultAsync(a => a.Name == boat.Name);
+            var boatIsExist = await Context.Boats.SingleOrDefaultAsync(a => a.Name == boatAddDto.Name);
             if (boatIsExist != null)
                 throw new Exception("Bu isimde başka bir tekne mevcut.");
-            boat.CreatedDate = DateTime.Now;
+            var boat = Mapper.Map<Boat>(boatAddDto);
             await Context.Boats.AddAsync(boat);
             await Context.SaveChangesAsync();
             return new DataResult(ResultStatus.Success, $"{boat.Name} adlı tekne eklenmiştir.", boat);
@@ -39,9 +38,10 @@ namespace CarProject.Business.Concrete
         public async Task<IDataResult> DeleteAsync(int id)
         {
             var boat = await Context.Boats.SingleOrDefaultAsync(a => a.Id == id);
-            if (boat is not null)
+            if (boat is null)
                 throw new NotFoundArgumentException("Böyle bir tekne bulunmamakta", new Error("Not Found", "Id"));
             boat.IsActive = false;
+            Context.Boats.Update(boat);
             await Context.SaveChangesAsync();
             return new DataResult(ResultStatus.Success, "Tekne başarıyla silindi.");
         }
@@ -69,14 +69,23 @@ namespace CarProject.Business.Concrete
             return new DataResult(ResultStatus.Success, boat);
         }
 
+        public async Task<IDataResult> HardDeleteAsync(int id)
+        {
+            var boat = await Context.Boats.SingleOrDefaultAsync(a => a.Id == id);
+            if (boat is null)
+                throw new NotFoundArgumentException("Böyle bir tekne bulunmamakta", new Error("Not Found", "Id"));
+            Context.Boats.Remove(boat);
+            await Context.SaveChangesAsync();
+            return new DataResult(ResultStatus.Success, "Tekne başarıyla silindi.");
+        }
+
         public async Task<IDataResult> UpdateAsync(BoatUpdateDto boatUpdateDto)
         {
             ValidationTool.Validate(new BoatUpdateValidator(), boatUpdateDto);
             var boatIsExist = await Context.Boats.SingleOrDefaultAsync(a => a.Id == boatUpdateDto.Id);
             if (boatIsExist is null)
                 throw new NotFoundArgumentException("Böyle bir tekne bulunamadı", new Error("Not Found", "Id"));
-
-            var boat = Mapper.Map<Boat>(boatUpdateDto);
+            var boat = Mapper.Map<BoatUpdateDto, Boat>(boatUpdateDto, boatIsExist);
             boat.ModifiedDate = DateTime.Now;
             Context.Boats.Update(boat);
             await Context.SaveChangesAsync();

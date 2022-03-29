@@ -26,9 +26,6 @@ namespace CarProject.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BoatPictureId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Color")
                         .IsRequired()
                         .HasMaxLength(20)

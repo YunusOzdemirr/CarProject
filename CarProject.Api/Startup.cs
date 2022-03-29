@@ -55,8 +55,8 @@ namespace CarProject.Api
 
             services.AddControllers(options =>
             {
-                options.Filters.Add<ValidationFilter>();
-                options.Filters.Add<JsonExceptionFilter>();
+                //options.Filters.Add<ValidationFilter>();
+                //options.Filters.Add<JsonExceptionFilter>();
                 // var policy = new AuthorizationPolicyBuilder().Build();
                 //options.Filters.Add(new AuthorizeFilter(policy));
             });
