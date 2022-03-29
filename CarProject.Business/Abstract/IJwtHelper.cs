@@ -8,8 +8,6 @@ namespace CarProject.Business.Abstract
     public interface IJwtHelper
     {
         AccessToken CreateToken(User user);
-        //IEnumerable<OperationClaim> GetClaims(User user);
-        AccessToken CreateAccessToken(User user);
     }
 }
 

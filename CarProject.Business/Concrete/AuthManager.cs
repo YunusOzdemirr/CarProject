@@ -43,7 +43,7 @@ namespace CarProject.Business.Concrete
                 if (!user.IsActive)
                     throw new NotFoundArgumentException(Messages.General.ValidationError(), new Error("Giriş  yapabilmek için hesabınızın aktif olması gereklidir", "IsActive"));
 
-                var accessToken = _jwtHelper.CreateAccessToken(user);
+                var accessToken = _jwtHelper.CreateToken(user);
                 UserToken userToken = new UserToken
                 {
                     UserId = user.Id,
@@ -87,7 +87,7 @@ namespace CarProject.Business.Concrete
             var user = Mapper.Map<User>(userRegisterDto);
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
-            var accessToken = _jwtHelper.CreateAccessToken(user);
+            var accessToken = _jwtHelper.CreateToken(user);
             UserToken userToken = new UserToken
             {
                 UserId = user.Id,
