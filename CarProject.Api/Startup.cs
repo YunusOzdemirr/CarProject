@@ -51,7 +51,7 @@ namespace CarProject.Api
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
-            services.AddAutoMapper(typeof(AuthProfile), typeof(CarProfile), typeof(BoatProfile));
+            services.AddAutoMapper(typeof(AuthProfile), typeof(CarProfile), typeof(BoatProfile), typeof(BusProfile), typeof(BrandProfile));
 
             services.AddControllers(options =>
             {

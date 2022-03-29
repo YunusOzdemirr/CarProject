@@ -28,6 +28,7 @@
     <None Remove="Microsoft.AspNetCore.Http.Extensions" />
     <None Remove="ValidationRules\FluentValidation\BoatValidator\" />
     <None Remove="ValidationRules\FluentValidation\BusValidator\" />
+    <None Remove="ValidationRules\FluentValidation\BrandValidator\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\" />
@@ -42,6 +43,7 @@
     <Folder Include="ValidationRules\FluentValidation\UserValidator\" />
     <Folder Include="ValidationRules\FluentValidation\BoatValidator\" />
     <Folder Include="ValidationRules\FluentValidation\BusValidator\" />
+    <Folder Include="ValidationRules\FluentValidation\BrandValidator\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarProject.Entities\CarProject.Entities.csproj" />

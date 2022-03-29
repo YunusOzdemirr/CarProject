@@ -11,6 +11,7 @@
     <None Remove="Dtos\CarDtos\" />
     <None Remove="Dtos\BoatDtos\" />
     <None Remove="Dtos\BusDtos\" />
+    <None Remove="Dtos\BrandDtos\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Concrete\" />
@@ -19,6 +20,7 @@
     <Folder Include="Dtos\CarDtos\" />
     <Folder Include="Dtos\BoatDtos\" />
     <Folder Include="Dtos\BusDtos\" />
+    <Folder Include="Dtos\BrandDtos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarProject.Shared\CarProject.Shared.csproj" />
