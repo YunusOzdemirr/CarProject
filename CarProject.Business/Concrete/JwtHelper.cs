@@ -6,9 +6,9 @@ using AutoMapper;
 using CarProject.Business.Abstract;
 using CarProject.Data.Concrete.EntityFramework.DatabaseContext;
 using CarProject.Entities.Concrete;
+using CarProject.Shared.Extensions;
 using CarProject.Shared.Utilities.Security.Encryption;
 using CarProject.Shared.Utilities.Security.Jwt;
-using CmnSoftwareBackend.Shared.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
@@ -81,10 +81,6 @@ namespace CarProject.Business.Concrete
             return claims;
         }
 
-        public AccessToken CreateAccessToken(User user)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
 

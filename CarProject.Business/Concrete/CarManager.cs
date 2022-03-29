@@ -16,6 +16,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CarProject.Business.Concrete
 {
+
     public class CarManager : ManagerBase, ICarService
     {
         public CarManager(Context dbContext, IMapper mapper) : base(dbContext, mapper)
@@ -28,7 +29,6 @@ namespace CarProject.Business.Concrete
             var isExist = await Context.Cars.SingleOrDefaultAsync(a => a.Name == car.Name);
             if (isExist is not null)
                 throw new Exception("Bu Araç Mevcut");
-
             await Context.Cars.AddAsync(car);
             await Context.SaveChangesAsync();
             return new DataResult(ResultStatus.Success, car);

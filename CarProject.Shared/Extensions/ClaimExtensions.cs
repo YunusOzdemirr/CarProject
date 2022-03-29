@@ -4,7 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 
-namespace CmnSoftwareBackend.Shared.Extensions
+namespace CarProject.Shared.Extensions
 {
     public static class ClaimExtensions
     {
@@ -12,7 +12,7 @@ namespace CmnSoftwareBackend.Shared.Extensions
         {
             claims.Add(new Claim(JwtRegisteredClaimNames.Email, email));
         }
-        public static void AddName(this ICollection<Claim> claims,string name)
+        public static void AddName(this ICollection<Claim> claims, string name)
         {
             claims.Add(new Claim(ClaimTypes.Name, name));
         }

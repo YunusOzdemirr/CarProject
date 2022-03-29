@@ -10,6 +10,7 @@
     <None Remove="Utilities\Exceptions\" />
     <None Remove="Microsoft.IdentityModel.Tokens" />
     <None Remove="FluentValidation" />
+    <None Remove="System.IdentityModel.Tokens.Jwt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
@@ -19,5 +20,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.16.0" />
     <PackageReference Include="FluentValidation" Version="10.4.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.16.0" />
   </ItemGroup>
 </Project>
