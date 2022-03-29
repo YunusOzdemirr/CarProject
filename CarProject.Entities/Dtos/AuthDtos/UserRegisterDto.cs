@@ -9,10 +9,9 @@ namespace CarProject.Entities.Dtos.AuthDtos
     {
         public string EmailAddress { get; set; }
         public string Password { get; set; }
-        public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public UserPicture? UserPicture { get; set; }
+        public byte[]? File { get; set; }
         [NotMapped]
         [JsonIgnore]
         public string IpAddress { get; set; }

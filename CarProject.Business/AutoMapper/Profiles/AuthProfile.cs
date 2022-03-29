@@ -2,6 +2,7 @@
 using AutoMapper;
 using CarProject.Entities.Concrete;
 using CarProject.Entities.Dtos.AuthDtos;
+using CarProject.Shared.Utilities.Security.Jwt;
 
 namespace CarProject.Business.AutoMapper.Profiles
 {
@@ -11,6 +12,7 @@ namespace CarProject.Business.AutoMapper.Profiles
         {
             CreateMap<UserRegisterDto, User>().ReverseMap();
             CreateMap<UserLoginDto, User>().ReverseMap();
+            CreateMap<UserToken, AccessToken>().ReverseMap();
         }
     }
 }

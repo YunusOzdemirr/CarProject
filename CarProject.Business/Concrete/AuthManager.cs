@@ -23,8 +23,9 @@ namespace CarProject.Business.Concrete
     public class AuthManager : ManagerBase, IAuthService
     {
         IJwtHelper _jwtHelper;
-        public AuthManager(Context Context, IMapper mapper) : base(Context, mapper)
+        public AuthManager(Context Context, IMapper mapper, IJwtHelper jwtHelper) : base(Context, mapper)
         {
+            _jwtHelper = jwtHelper;
         }
 
         public async Task<IDataResult> LoginAsync(UserLoginDto userLoginDto)
@@ -104,11 +105,11 @@ namespace CarProject.Business.Concrete
                 IsDeleted = false
             };
             UserPicture userPicture = null;
-            if (userRegisterDto.UserPicture.File != null)
+            if (userRegisterDto.File != null)
             {
                 userPicture = new UserPicture
                 {
-                    File = userRegisterDto.UserPicture.File,
+                    File = userRegisterDto.File,
                     UserId = user.Id,
                     IsActive = true,
                     IsDeleted = false,

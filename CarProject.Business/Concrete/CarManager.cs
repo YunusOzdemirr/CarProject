@@ -6,6 +6,7 @@ using CarProject.Business.Abstract;
 using CarProject.Business.ValidationRules.FluentValidation.CarValidator;
 using CarProject.Data.Concrete.EntityFramework.DatabaseContext;
 using CarProject.Entities.Concrete;
+using CarProject.Entities.Dtos.CarDtos;
 using CarProject.Shared.Entities.Concrete;
 using CarProject.Shared.Results.ComplexTypes;
 using CarProject.Shared.Results.Concrete;
@@ -23,15 +24,16 @@ namespace CarProject.Business.Concrete
         {
         }
 
-        public async Task<IDataResult> AddAsync(Car car)
+        public async Task<IDataResult> AddAsync(CarAddDto carAddDto)
         {
+            var car = Mapper.Map<Car>(carAddDto);
             ValidationTool.Validate(new CarAddValidator(), car);
             var isExist = await Context.Cars.SingleOrDefaultAsync(a => a.Name == car.Name);
             if (isExist is not null)
                 throw new Exception("Bu Araç Mevcut");
             await Context.Cars.AddAsync(car);
             await Context.SaveChangesAsync();
-            return new DataResult(ResultStatus.Success, car);
+            return new DataResult(ResultStatus.Success, carAddDto);
         }
 
         public async Task<IDataResult> DeleteAsync(int id)
@@ -58,13 +60,13 @@ namespace CarProject.Business.Concrete
         public async Task<IDataResult> GetAllAsync(bool? isActive)
         {
             IQueryable<Car> query = Context.Set<Car>();
-            if (isActive.HasValue) query.Where(a => a.IsActive == isActive);
+            if (isActive.HasValue) query = query.Where(a => a.IsActive == isActive);
             return new DataResult(ResultStatus.Success, query);
         }
 
         public async Task<IDataResult> GetByColor(string color)
         {
-            if (string.IsNullOrEmpty(color))
+            if (!string.IsNullOrEmpty(color))
             {
                 var cars = Context.Cars.Where(a => a.Color == color);
                 return new DataResult(ResultStatus.Success, cars);

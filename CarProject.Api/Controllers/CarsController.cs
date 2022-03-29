@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CarProject.Business.Abstract;
 using CarProject.Entities.Concrete;
+using CarProject.Entities.Dtos.CarDtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +22,13 @@ namespace CarProject.Api.Controllers
         {
             _carService = carService;
         }
-
+        [HttpPost]
+        [Route("[action]")]
+        public async Task<IActionResult> AddAsync(CarAddDto carAddDto)
+        {
+            var result = await _carService.AddAsync(carAddDto);
+            return Ok(result);
+        }
         [HttpGet]
         [Route("[action]")]
         public async Task<IActionResult> GetById(int carId)

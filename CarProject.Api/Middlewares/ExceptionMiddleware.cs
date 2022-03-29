@@ -13,12 +13,10 @@ namespace CarProject.Api.Middlewares
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly ILogger _logger;
 
-        public ExceptionMiddleware(RequestDelegate requestDelegate, ILogger logger)
+        public ExceptionMiddleware(RequestDelegate requestDelegate)
         {
             _next = requestDelegate;
-            _logger = logger;
         }
         public async Task Invoke(HttpContext context)
         {
@@ -28,7 +26,6 @@ namespace CarProject.Api.Middlewares
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
                 switch (ex)
                 {
                     case NotFoundArgumentException error1:

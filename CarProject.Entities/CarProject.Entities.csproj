@@ -8,11 +8,13 @@
     <None Remove="Concrete\" />
     <None Remove="Dtos\" />
     <None Remove="Dtos\AuthDtos\" />
+    <None Remove="Dtos\CarDtos\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Concrete\" />
     <Folder Include="Dtos\" />
     <Folder Include="Dtos\AuthDtos\" />
+    <Folder Include="Dtos\CarDtos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarProject.Shared\CarProject.Shared.csproj" />
