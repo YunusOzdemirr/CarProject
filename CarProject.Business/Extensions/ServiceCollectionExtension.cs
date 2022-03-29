@@ -16,6 +16,8 @@ namespace CarProject.Business.Extensions
             serviceCollection.AddScoped<ICarService, CarManager>();
             //serviceCollection.AddScoped<IUserService, UserManager>();
             serviceCollection.AddScoped<IAuthService, AuthManager>();
+            serviceCollection.AddScoped<IBusService, BusManager>();
+            serviceCollection.AddScoped<IBoatService, BoatManager>();
             return serviceCollection;
         }
     }

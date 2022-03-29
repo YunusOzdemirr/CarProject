@@ -71,6 +71,7 @@ namespace CarProject.Business.Concrete
 
         public async Task<IDataResult> UpdateAsync(BoatUpdateDto boatUpdateDto)
         {
+            ValidationTool.Validate(new BoatUpdateValidator(), boatUpdateDto);
             var boatIsExist = await Context.Boats.SingleOrDefaultAsync(a => a.Id == boatUpdateDto.Id);
             if (boatIsExist is null)
                 throw new NotFoundArgumentException("Böyle bir tekne bulunamadı", new Error("Not Found", "Id"));

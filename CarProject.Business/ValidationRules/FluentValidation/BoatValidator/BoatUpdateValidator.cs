@@ -2,11 +2,11 @@
 using CarProject.Entities.Concrete;
 using FluentValidation;
 
-namespace CarProject.Business.ValidationRules.FluentValidation.CarValidator
+namespace CarProject.Business.ValidationRules.FluentValidation.BoatValidator
 {
-    public class CarUpdateValidator : AbstractValidator<Car>
+    public class BoatUpdateValidator : AbstractValidator<Boat>
     {
-        public CarUpdateValidator()
+        public BoatUpdateValidator()
         {
             RuleFor(a => a.Id).NotEmpty();
             RuleFor(a => a.Id).GreaterThanOrEqualTo(1);
@@ -14,6 +14,8 @@ namespace CarProject.Business.ValidationRules.FluentValidation.CarValidator
             RuleFor(a => a.Name).MinimumLength(2);
             RuleFor(a => a.Name).MaximumLength(100);
             RuleFor(a => a.Color).NotEmpty();
+            RuleFor(a => a.Color).MaximumLength(15);
+            RuleFor(a => a.Color).MinimumLength(2);
         }
     }
 }
